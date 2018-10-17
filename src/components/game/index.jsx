@@ -1,9 +1,21 @@
 import React from 'react';
+import styled from 'styled-components';
 
 import Board from '../board/index';
 import CalculateWinner from '../calculateWinner/index';
-  
-export class Game extends React.Component {
+
+const GameBoard = styled.div`
+
+`;
+const GameInfo = styled.div`
+    margin-left: 20px;
+`;
+const Game = styled.div`
+    display: flex;
+    flex-direction: row;
+`;
+
+export class Component extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -62,21 +74,21 @@ export class Game extends React.Component {
             status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
             }
             return (
-                <div className="game">
-                <div className="game-board">
+                <Game>
+                <GameBoard>
                     <Board
                     squares={current.squares}
                     onClick={(i) => this.handleClick(i)}
                     />
         
-                </div>
-                <div className="game-info">
+                </GameBoard>
+                <GameInfo>
                     <div>{status}</div>
                     <ol>{moves}</ol>
-                </div>
-                </div>
+                </GameInfo>
+                </Game>
             );
     }
 }
 
-export default Game;
+export default Component;
